@@ -88,7 +88,7 @@ async function initializeDatabaseConnection() {
     //One to Many relationship between TypeEvent and Event
     TypeEvent.hasMany(Event)
     Event.belongsTo(TypeEvent)
-    await database.sync({ force: true })
+    //await database.sync({ force: true })
     return {
         PointOfInterest,
         Itinerary,

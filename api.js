@@ -8,7 +8,7 @@ const port = 3000;
 
 async function startApplicationServer() {
     const models = await initializeDatabaseConnection.initializeDatabaseConnection();
-    initialize.initialize(models)
+    //initialize.initialize(models)
 
     //API that simply returns all the pointOfInterests present in the points_of_interest table
     app.get("/pointOfInterests", async (req, res) => {
