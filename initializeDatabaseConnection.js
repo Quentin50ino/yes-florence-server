@@ -16,7 +16,7 @@ const database = new Sequelize(connectionURI, {
 
 //Function that will initialize the connection to the database and will create all the
 //structures of the tables and their connections.
-export default async function initializeDatabaseConnection() {
+async function initializeDatabaseConnection() {
     await database.authenticate()
     const PointOfInterest = database.define("point_of_interest", {
         title : DataTypes.STRING,
@@ -102,3 +102,5 @@ export default async function initializeDatabaseConnection() {
         EventPointOfInterest
     }
 }
+
+module.exports = {initializeDatabaseConnection : initializeDatabaseConnection}

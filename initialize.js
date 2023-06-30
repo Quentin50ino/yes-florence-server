@@ -1,5 +1,5 @@
 //In this function is initialized the database with all the data are needed in the application.
-export default async function initialize (models) {
+async function initialize (models) {
     const typeItineraryList = [
         {
             type_name : "Half day itineraries"
@@ -754,3 +754,5 @@ export default async function initialize (models) {
     ]
     serviceList.map(service => models.Service.create(service))
 }
+
+module.exports = { initialize : initialize}

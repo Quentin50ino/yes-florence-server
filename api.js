@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
-const initialize = require('./initialize').default
-const initializeDatabaseConnection = require('./initializeDatabaseConnection').default
+const initialize = require('./initialize')
+const initializeDatabaseConnection = require('./initializeDatabaseConnection')
 app.use(express.json())
 const { Op } = require('sequelize');
+const port = 3000;
+console.log("INZIALIZE DB: ", initializeDatabaseConnection.initializeDatabaseConnection);
 
 async function startApplicationServer() {
-    const models = await initializeDatabaseConnection();
-    initialize(models)
+    const models = await initializeDatabaseConnection.initializeDatabaseConnection();
+    initialize.initialize(models)
 
     //API that simply returns all the pointOfInterests present in the points_of_interest table
     app.get("/pointOfInterests", async (req, res) => {
@@ -219,4 +221,6 @@ async function startApplicationServer() {
 
 startApplicationServer();
 
-export default app
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
