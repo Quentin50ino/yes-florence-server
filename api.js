@@ -5,7 +5,6 @@ const initializeDatabaseConnection = require('./initializeDatabaseConnection')
 app.use(express.json())
 const { Op } = require('sequelize');
 const port = 3000;
-console.log("INZIALIZE DB: ", initializeDatabaseConnection.initializeDatabaseConnection);
 
 async function startApplicationServer() {
     const models = await initializeDatabaseConnection.initializeDatabaseConnection();
@@ -221,6 +220,6 @@ async function startApplicationServer() {
 
 startApplicationServer();
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(process.env.PORT || port, () => {
+  console.log(`Listening on port ${port}`)
 })
